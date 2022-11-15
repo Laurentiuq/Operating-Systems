@@ -7,34 +7,58 @@
 #include <string.h>
 
 
-
-
-#define nrLin1 3
-#define nrCol1 2
-#define nrLin2 2
-#define nrCol2 3
+// #define nrLin1 3
+// #define nrCol1 2
+// #define nrLin2 2
+// #define nrCol2 3
 // const int nrLin1 = 3, nrCol1 = 2,  nrLin2 = 2, nrCol2 = 3;
+int nrLin1, nrCol1, nrLin2, nrCol2;
 
+// int m1[nrLin1][nrCol1] = {
+//     {1,2},
+//     {2,1},
+//     {4,5}
+// };
 
-int m1[nrLin1][nrCol1] = {
-    {1,2},
-    {2,1},
-    {4,5}
-};
+// int m2[nrLin2][nrCol2] = {
+//     {1,2,3},
+//     {2,1,1}
+// };
 
-int m2[nrLin2][nrCol2] = {
-    {1,2,3},
-    {2,1,1}
-};
+int m1[100][100], m2[100][100];
 
 // matricea rezultat
-int mRez[nrLin1][nrCol2];
+int mRez[100][100];
 
 // parametrii dati functiei utilizata in thread
 struct Params{
     int lin;
     int col;
 };
+
+void citire(){
+    printf("Numar linii prima matrice: \n");
+    scanf("%d", &nrLin1);
+    printf("Numar coloane prima matrice: \n");
+    scanf("%d", &nrCol1);
+    printf("Elemente prima matrice: \n");
+
+    for(int i = 0; i<nrLin1; i++)
+        for(int j = 0; j<nrCol1; j++)
+            scanf("%d", &m1[i][j]);
+
+    printf("Numar linii a doua matrice: \n");
+    scanf("%d", &nrLin2);
+    printf("Numar coloane a doua matrice: \n");
+    scanf("%d", &nrCol2);
+    printf("Elemente a doua matrice: \n");
+
+    for(int i = 0; i<nrLin2; i++)
+        for(int j = 0; j<nrCol2; j++)
+            scanf("%d", &m2[i][j]);
+
+    printf("\n\n");
+}
 
 // functia care face inmultirea 
 void* inmultire(void* params){
@@ -48,6 +72,7 @@ void* inmultire(void* params){
 }
 
 int main(){
+    citire();
     // o sa avem mai multe thread-uri
     pthread_t threads[nrLin1 * nrCol2];
     // la ce thread suntem la un moment dat si la final cate threaduri am creat
