@@ -56,6 +56,7 @@ int increase_count (int count)
 
     // eliberam resursele
     available_resources += count;
+
     printf("Released %d resources, %d remaining\n", count, available_resources);
 
     // deblocam mutexul
@@ -81,6 +82,9 @@ void* thread_action(void* x){
     // daca j e foarte mare ramane fara resurse
     for(int j=1; j<=10000;j++)
         dummy_var = 1;
+
+    // wait()
+
     // printf("A fost executat ceva\n");
  
     // elibreaza resursele

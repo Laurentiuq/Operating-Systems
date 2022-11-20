@@ -11,8 +11,8 @@
 // #define nrCol1 2
 // #define nrLin2 2
 // #define nrCol2 3
-// const int nrLin1 = 3, nrCol1 = 2,  nrLin2 = 2, nrCol2 = 3;
-int nrLin1, nrCol1, nrLin2, nrCol2;
+
+
 
 // int m1[nrLin1][nrCol1] = {
 //     {1,2},
@@ -24,6 +24,9 @@ int nrLin1, nrCol1, nrLin2, nrCol2;
 //     {1,2,3},
 //     {2,1,1}
 // };
+
+
+int nrLin1, nrCol1, nrLin2, nrCol2;
 
 int m1[100][100], m2[100][100];
 

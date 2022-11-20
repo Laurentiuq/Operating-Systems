@@ -7,6 +7,7 @@
 #include <stdlib.h>
 
 
+// functia care calculeaza collatz
 void collatz(int nr){
     
     printf("%d: ", nr);
@@ -24,6 +25,7 @@ void collatz(int nr){
 
 int main(int argc, const char *argv []){
     
+    // cream un proces copul care apeleaza functia
     pid_t pid = fork();
     if (pid < 0)
         return errno;
@@ -31,9 +33,11 @@ int main(int argc, const char *argv []){
     {
         int nr;
         nr = atoi(argv[1]);
+        // apelam functie pentru numarul dat ca parametru
         collatz(nr);
         printf("\n");
     }
+    // asteptam sa se execute procesul copil
     else{
         wait(NULL);
         printf("Child process %d ended", pid);

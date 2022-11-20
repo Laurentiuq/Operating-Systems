@@ -30,10 +30,11 @@ void barrier_point(){
     // daca am ajuns la ultimul thread deblocam mutexul crestem valoarea variabilei semafor, deci sem_wait poate sa o scada si sa inceapa executia firelor
     if(current_thread == nr_threads){
         pthread_mutex_unlock(&mtx);
+        // crestem pentru toate threadurile deoarece intra o singura data in if
         for(int i = 0; i < current_thread; i++)
             sem_post(&sem);
     }
-    
+
     pthread_mutex_unlock(&mtx);
     // cat timp variabila semafor e 0(nu suntem la ultimul thread) blocheaza executia firului de executie
     sem_wait(&sem);
@@ -51,7 +52,8 @@ void* tfun(void *v)
 }
 
 int main(){
-    init(5);
+    init(10);
+    // initializare mutex
     pthread_mutex_init(&mtx, NULL);
     pthread_t* threads = malloc(sizeof(pthread_t) * nr_threads);
     for(int i = 0; i < nr_threads; i++){
